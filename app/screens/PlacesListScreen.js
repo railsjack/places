@@ -1,5 +1,5 @@
 import React from "react";
-import { Platform, View, Text, StyleSheet, FlatList } from "react-native";
+import { Platform, StyleSheet, FlatList } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { useSelector } from "react-redux";
 
@@ -8,7 +8,6 @@ import PlaceItem from "../components/PlaceItem";
 
 const PlacesListScreen = props => {
   const places = useSelector(state => state.Place.places);
-  console.log("PlacesListScreen", places);
   return (
     <FlatList
       data={places}

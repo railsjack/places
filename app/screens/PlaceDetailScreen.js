@@ -10,7 +10,7 @@ const PlacesDetailScreen = props => {
 
 PlacesDetailScreen.navigationOptions = navData => {
   return {
-    headerTitle: navData.navigation.getParam("title")
+    headerTitle: navData.navigation.getParam("placeTitle")
   };
 };
 const styles = StyleSheet.create({});
