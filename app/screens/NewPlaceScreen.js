@@ -3,17 +3,22 @@ import { Button, View, Text, TextInput, StyleSheet } from "react-native";
 import { useDispatch } from "react-redux";
 import Colors from "../constants/Colors";
 import * as placesActions from "../store/actions/place_actions";
+import ImagePicker from '../components/ImageSelector'
 
 const NewPlaceScreen = props => {
   const [title, setTitle] = useState("");
+  const [selectedImage, setSelectedImage] = useState();
   const titleChangeHandler = text => {
     setTitle(text);
   };
 
   const dispatch = useDispatch();
   const saveHandler = () => {
-    dispatch(placesActions.addPlace(title));
+    dispatch(placesActions.addPlace(title, selectedImage));
     props.navigation.goBack();
+  };
+  const imageTakenHandler = imagePath => {
+    setSelectedImage(imagePath)
   };
   return (
     <View style={styles.form}>
@@ -23,6 +28,7 @@ const NewPlaceScreen = props => {
         onChangeText={titleChangeHandler}
         value={title}
       />
+      <ImagePicker onImageTaken={imageTakenHandler} />
       <Button title="Save Place" color={Colors.primary} onPress={saveHandler} />
     </View>
   );
